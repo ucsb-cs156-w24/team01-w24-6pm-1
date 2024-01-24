@@ -16,6 +16,7 @@ public class ZipCodeQueryService {
         restTemplate = restTemplateBuilder.build();
     }
 
+    
     public static final String ENDPOINT = "";
 
     public String getJSON(String zipcode) throws HttpClientErrorException {
