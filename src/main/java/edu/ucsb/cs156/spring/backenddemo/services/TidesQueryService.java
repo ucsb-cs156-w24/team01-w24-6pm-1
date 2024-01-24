@@ -1,14 +1,20 @@
 package edu.ucsb.cs156.spring.backenddemo.services;
 
+import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.web.client.RestTemplate;
-import java.util.Map;
+
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
-
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
@@ -28,8 +34,14 @@ public class TidesQueryService {
 
     public String getJSON(String beginDate, String endDate, String station) throws HttpClientErrorException {
         log.info("beginDate={}, endDate={}, station={}", beginDate, endDate, station);
-        Map<String, String> uriVariables = Map.of("beginDate", beginDate, "endDate", endDate, "station", station);
 
-        return restTemplate.getForObject(ENDPOINT, String.class, uriVariables);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        Map<String,String> uriVariables = Map.of("beginDate", beginDate, "endDate", endDate, "station", station);
+        
+        return restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class, uriVariables).getBody();
     }
 }
