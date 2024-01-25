@@ -16,10 +16,10 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 public class TidesQueryServiceTests {
 
     @Autowired
-    private MockRestServiceServer mockRestServiceServer;
+    private TidesQueryService tidesQueryService;
 
     @Autowired
-    private TidesQueryService tidesQueryService;
+    private MockRestServiceServer mockRestServiceServer;
 
     @Test
     public void test_getJSON() {

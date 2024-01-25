@@ -22,14 +22,13 @@ public class TidesControllerTests {
   @MockBean
   TidesQueryService mockTidesQueryService;
 
-
   @Test
   public void test_getTides() throws Exception {
   
     String fakeJsonResult="{ \"fake\" : \"result\" }";
-    String beginDate = "20230710";
-    String endDate = "20230712";
-    String station = "9311790";
+    String beginDate = "20230101";
+    String endDate = "20231231";
+    String station = "9411340";
 
     when(mockTidesQueryService.getJSON(eq(beginDate),eq(endDate), eq(station))).thenReturn(fakeJsonResult);
 
