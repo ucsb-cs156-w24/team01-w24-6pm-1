@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name=&quot;Zip Code info from http://api.zippopotam.us/us/{zipcode}&quot;)
+@Tag(name=&quot;Zip Code&quot;)
 <span class="fc" id="L23">@Slf4j</span>
 @RestController
 @RequestMapping(&quot;/api/zipcode&quot;)
@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
     @Autowired
     ZipCodeQueryService ZipCodeQueryService;
 
-    @Operation(summary=&quot;Get a ZipCode&quot;, description =&quot;Info about&quot;)
+    @Operation(summary=&quot;Get a ZipCode&quot;, description =&quot;Info about zipcodes&quot;)
     @GetMapping(&quot;/get&quot;)
     public ResponseEntity&lt;String&gt; getZipCode(
         @Parameter(name=&quot;zipcode&quot;, example=&quot;93117&quot;) @RequestParam String zipcode
