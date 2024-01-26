@@ -1,38 +1,23 @@
-# STARTER-team01
+# w24-6pm-1-team01
 
 Lab instructions: <https://ucsb-cs156.github.io/w24/lab/team01.html>
 
 * TODO: Update the following table, then delete this line that says "TODO".
 
 ```
-|   Name    | GitHub Id |  Service                    | Controller                |
-|-----------|-----------|-----------------------------|---------------------------|
-|           |           | `LocationQueryService`      | `LocationController`      |
-|           |           | `PublicHolidayQueryService` | `PublicHolidayController` |
-|           |           | `TidesQueryService`         | `TidesController`         |
-|           |           | `UniversityQueryService`    | `UniversityController`    |
-|           |           | `ZipCodeQueryService`       | `ZipCodeController`       |
+| Name              | GitHub Id        | Service                     | Controller                |
+|-------------------|------------------|-----------------------------|---------------------------|
+| Kushagra Kanaujia | KushagraKanaujia | `JokeQueryService`          | `JokeController`          |
+| Philly Lim        | phillylim        | `LocationQueryService`      | `LocationController`      |
+| Victor Nardi      | vcnardi524       | `PublicHolidayQueryService` | `PublicHolidayController` |
+| Shashank Bhagwani | shashank790      | `TidesQueryService`         | `TidesController`         |
+| Jenil Prajapati   | jenil-prajapati  | `UniversityQueryService`    | `UniversityController`    |
+| Sanil Katula      | sanilkatula      | `ZipCodeQueryService`       | `ZipCodeController`       |
+
 ```
+Repo: https://github.com/ucsb-cs156-w24/w24-6pm-1-team01
 
-
-* TODO: Change the title of this README
-  in the text `# STARTER-team01` above
-  to match the name of your repo, i. e., `w24-5pm-2-team01`, then delete
-  this TODO item.
-
-* TODO: Correct the links to repo below,
-  then delete this TODO.  Replace it with
-  a link to your repo, e.g.
-  https://github.com/ucsb-cs156-w24/w24-5pm-2-team01
-
-Repo: https://ucsb-cs156-w24/STARTER-team01
-
-* TODO: Correct the links to app on Dokku below,
-  then delete this TODO.  Replace it with
-  a link to your running app on Dokku, e.g.
-  https://team01.dokku-00.cs.ucsb.edu
-
-On Heroku: https://team01.dokku-00.cs.ucsb.edu
+On Heroku: https://team01.dokku-09.cs.ucsb.edu
 
 ## About this repo
 
@@ -46,15 +31,15 @@ team of up to 5 students can build a proxy similar to the one in the example cod
 
 ## What can you do with this code?
 
-| Command | What it does   |
-|----------|---------------------------------------|
-| `mvn compile` | Should result in a clean compile |
-| `mvn test` | Runs JUnit tests on the code base |
-| `mvn test jacoco:report` | Runs JUnit tests, and if all tests pass, computes code coverage.  The code coverage report (Jacoco) can be found in `target/site/jacoco/index.html` |
-| `mvn package` | Builds the jar file `target/team01-spring-boot-1.0.0.jar` |
-| `mvn spring-boot:run` | Runs the code to startup a web server.  Access it via `http://localhost:8080` on the *same machine* where the server is running.  Use CTRL/C to stop it. |
-| `java -jar target/team01-spring-backend-1.0.0.jar` | If done after `mvn package`, this is another way to start up the web server.|
-| `mvn test pitest:mutationCoverage` | Run [pitest mutation coverage](https://pitest.org).  View `target/pit-reports/index.html` for results (may take a few minutes)|
+| Command                                            | What it does                                                                                                                                             |
+|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `mvn compile`                                      | Should result in a clean compile                                                                                                                         |
+| `mvn test`                                         | Runs JUnit tests on the code base                                                                                                                        |
+| `mvn test jacoco:report`                           | Runs JUnit tests, and if all tests pass, computes code coverage.  The code coverage report (Jacoco) can be found in `target/site/jacoco/index.html`      |
+| `mvn package`                                      | Builds the jar file `target/team01-spring-boot-1.0.0.jar`                                                                                                |
+| `mvn spring-boot:run`                              | Runs the code to startup a web server.  Access it via `http://localhost:8080` on the *same machine* where the server is running.  Use CTRL/C to stop it. |
+| `java -jar target/team01-spring-backend-1.0.0.jar` | If done after `mvn package`, this is another way to start up the web server.                                                                             |
+| `mvn test pitest:mutationCoverage`                 | Run [pitest mutation coverage](https://pitest.org).  View `target/pit-reports/index.html` for results (may take a few minutes)                           |
 
 # Deploying on Dokku
 
