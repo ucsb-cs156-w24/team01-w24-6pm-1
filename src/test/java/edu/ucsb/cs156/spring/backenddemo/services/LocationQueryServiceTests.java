@@ -8,6 +8,7 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
@@ -35,6 +36,7 @@ public class LocationQueryServiceTests {
 
         String actualResult = locationQueryService.getJSON(location);
         assertEquals(fakeJsonResult, actualResult);
+        assertNotEquals(null, fakeJsonResult);
     }
 }
 
