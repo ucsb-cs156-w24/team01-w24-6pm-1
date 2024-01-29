@@ -12,7 +12,7 @@ import static org.springframework.test.web.client.match.MockRestRequestMatchers.
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 @RestClientTest(UniversityQueryService.class)
-public class UniversityQueryServiceTest {
+public class UniversityQueryServiceTests {
 
     @Autowired
     private MockRestServiceServer mockRestServiceServer;
@@ -22,12 +22,10 @@ public class UniversityQueryServiceTest {
 
     @Test
     public void testGetJSON() {
-        // Given
         String university = "UCSB";
         String expectedURL = UniversityQueryService.ENDPOINT.replace("{name}", university);
         String fakeJsonResult = "{ \"fake\" : \"result\" }";
 
-        // When
         this.mockRestServiceServer.expect(requestTo(expectedURL))
                 .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
                 .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
@@ -35,7 +33,6 @@ public class UniversityQueryServiceTest {
 
         String actualResult = universityQueryService.getJSON(university);
 
-        // Then
         assertEquals(fakeJsonResult, actualResult);
     }
 }
