@@ -44,4 +44,3 @@ team of up to 5 students can build a proxy similar to the one in the example cod
 # Deploying on Dokku
 
 For advice on deploying on Dokku, see: [/docs/dokku.md](/docs/dokku.md)
-
