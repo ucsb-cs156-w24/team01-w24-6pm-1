@@ -1,34 +1,42 @@
 package edu.ucsb.cs156.spring.backenddemo.services;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.List;
+import java.util.Map;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+
 
 @Slf4j
 @Service
 public class UniversityQueryService {
 
     private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
 
-    public UniversityQueryService(RestTemplateBuilder restTemplateBuilder, ObjectMapper objectMapper) {
-        this.restTemplate = restTemplateBuilder.build();
-        this.objectMapper = objectMapper;
+    public UniversityQueryService(RestTemplateBuilder restTemplateBuilder) {
+        restTemplate = restTemplateBuilder.build();
     }
 
     public static final String ENDPOINT = "http://universities.hipolabs.com/search?name={name}";
 
     public String getJSON(String name) throws HttpClientErrorException {
-        String url = ENDPOINT.replace("{name}", name);
-        try {
-            return restTemplate.getForObject(url, String.class);
-        } catch (HttpClientErrorException e) {
-            log.error("Error while fetching university data: {}", e.getMessage());
-            throw e;
-        }
+        log.info("name={}", name);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
+        headers.setContentType(MediaType.APPLICATION_JSON);
+
+        HttpEntity<String> ent = new HttpEntity<>(headers);
+        Map<String, String> uniVar = Map.of("name", name);
+
+        ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, ent, String.class, uniVar);
+
+        return re.getBody();
     }
 }
