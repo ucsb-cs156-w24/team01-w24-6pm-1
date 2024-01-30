@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.web.client.RestTemplate;
 
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,7 +22,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 
-<span class="fc" id="L24">@Slf4j</span>
+<span class="fc" id="L25">@Slf4j</span>
 @Service
     
 public class JokeQueryService 
@@ -32,32 +33,32 @@ public class JokeQueryService
     
 
     public JokeQueryService(RestTemplateBuilder restTemplateBuilder) 
-<span class="fc" id="L35">    {</span>
-<span class="fc" id="L36">        restTemplate = restTemplateBuilder.build();</span>
-<span class="fc" id="L37">    }</span>
+<span class="fc" id="L36">    {</span>
+<span class="fc" id="L37">        restTemplate = restTemplateBuilder.build();</span>
+<span class="fc" id="L38">    }</span>
 
     public static final String ENDPOINT = &quot;https://v2.jokeapi.dev/joke/{category}?amount={numJokes}&quot;;
 
     public String getJSON(String category, int numJokes) throws HttpClientErrorException
     {
 
-<span class="nc" id="L44">        log.info(&quot;category={}, numJokes={}&quot;, category, numJokes);</span>
+<span class="nc" id="L45">        log.info(&quot;category={}, numJokes={}&quot;, category, numJokes);</span>
 
-<span class="nc" id="L46">        HttpHeaders headers = new HttpHeaders();</span>
-<span class="nc" id="L47">        headers.setAccept(List.of(MediaType.APPLICATION_JSON));</span>
-<span class="nc" id="L48">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
+<span class="nc" id="L47">        HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L48">        headers.setAccept(List.of(MediaType.APPLICATION_JSON));</span>
+<span class="nc" id="L49">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
 
-<span class="nc" id="L50">        Map&lt;String, String&gt; uriVariables = Map.of(&quot;category&quot;, category, &quot;numJokes&quot;, Integer.toString(numJokes));</span>
+<span class="nc" id="L51">        Map&lt;String, String&gt; uriVariables = Map.of(&quot;category&quot;, category, &quot;numJokes&quot;, Integer.toString(numJokes));</span>
         
 
-<span class="nc" id="L53">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</span>
+<span class="nc" id="L54">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</span>
         
 
-<span class="nc" id="L56">        ResponseEntity&lt;String&gt; re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,</span>
+<span class="nc" id="L57">        ResponseEntity&lt;String&gt; re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,</span>
                 uriVariables);
         
 
-<span class="nc" id="L60">        return re.getBody();</span>
+<span class="nc" id="L61">        return re.getBody();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
