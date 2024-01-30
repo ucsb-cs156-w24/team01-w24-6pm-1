@@ -1,58 +1,45 @@
 package edu.ucsb.cs156.spring.backenddemo.services;
 
-import java.util.List;
-import java.util.Map;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import org.springframework.web.client.RestTemplate;
-
-import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.client.RestClientTest;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.client.RestTemplate;
-
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.test.web.client.MockRestServiceServer;
 
 
+import org.junit.jupiter.api.Test;
 
-@Slf4j
-@Service
-public class JokeQueryService 
-{
 
-    private final RestTemplate restTemplate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
+import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.header;
 
-    public JokeQueryService(RestTemplateBuilder restTemplateBuilder) 
-    {
-        restTemplate = restTemplateBuilder.build();
-    }
+@RestClientTest(JokeQueryService.class)
+public class JokeQueryServiceTests {
 
-    public static final String ENDPOINT = "https://v2.jokeapi.dev/joke/{category}?amount={numJokes}";
-
-    public String getJSON(String category, int numJokes) throws HttpClientErrorException
-  {
-
-        log.info("category={}, numJokes={}", category, numJokes);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(List.of(MediaType.APPLICATION_JSON));
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        Map<String, String> uriVariables = Map.of("category", category, "numJokes", Integer.toString(numJokes));
     
+    @Autowired
+    private MockRestServiceServer mockRestServiceServer;
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
+    @Autowired
+    private JokeQueryService jokeQueryService;
 
-        ResponseEntity<String> re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,
-                uriVariables);
     
+    @Test
+    public void test_getJSON() {
+        String category = "Programming";
+        int numJokes = 4;
+        String expectedURL = JokeQueryService.ENDPOINT.replace("{category}", category).replace("{numJokes}", Integer.toString(numJokes));
 
-        return re.getBody();
+        String fakeJsonResult = "{ \"fake\" : \"result\" }";
+
+        this.mockRestServiceServer.expect(requestTo(expectedURL))
+                .andExpect(header("Accept", MediaType.APPLICATION_JSON.toString()))
+                .andExpect(header("Content-Type", MediaType.APPLICATION_JSON.toString()))
+                .andRespond(withSuccess(fakeJsonResult, MediaType.APPLICATION_JSON));
+
+        String actualResult = jokeQueryService.getJSON(category, numJokes);
+        assertEquals(fakeJsonResult, actualResult); 
     }
+    
 }
