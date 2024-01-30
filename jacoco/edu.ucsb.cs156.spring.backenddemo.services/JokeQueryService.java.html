@@ -42,23 +42,23 @@ public class JokeQueryService
     public String getJSON(String category, int numJokes) throws HttpClientErrorException
     {
 
-<span class="nc" id="L45">        log.info(&quot;category={}, numJokes={}&quot;, category, numJokes);</span>
+<span class="fc" id="L45">        log.info(&quot;category={}, numJokes={}&quot;, category, numJokes);</span>
 
-<span class="nc" id="L47">        HttpHeaders headers = new HttpHeaders();</span>
-<span class="nc" id="L48">        headers.setAccept(List.of(MediaType.APPLICATION_JSON));</span>
-<span class="nc" id="L49">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
+<span class="fc" id="L47">        HttpHeaders headers = new HttpHeaders();</span>
+<span class="fc" id="L48">        headers.setAccept(List.of(MediaType.APPLICATION_JSON));</span>
+<span class="fc" id="L49">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
 
-<span class="nc" id="L51">        Map&lt;String, String&gt; uriVariables = Map.of(&quot;category&quot;, category, &quot;numJokes&quot;, Integer.toString(numJokes));</span>
+<span class="fc" id="L51">        Map&lt;String, String&gt; uriVariables = Map.of(&quot;category&quot;, category, &quot;numJokes&quot;, Integer.toString(numJokes));</span>
         
 
-<span class="nc" id="L54">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</span>
+<span class="fc" id="L54">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(headers);</span>
         
 
-<span class="nc" id="L57">        ResponseEntity&lt;String&gt; re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,</span>
+<span class="fc" id="L57">        ResponseEntity&lt;String&gt; re = restTemplate.exchange(ENDPOINT, HttpMethod.GET, entity, String.class,</span>
                 uriVariables);
         
 
-<span class="nc" id="L61">        return re.getBody();</span>
+<span class="fc" id="L61">        return re.getBody();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
