@@ -17,7 +17,7 @@ Lab instructions: <https://ucsb-cs156.github.io/w24/lab/team01.html>
 ```
 Repo: https://github.com/ucsb-cs156-w24/w24-6pm-1-team01
 
-On Heroku: https://team01.dokku-09.cs.ucsb.edu
+On Heroku: http://team01.dokku-09.cs.ucsb.edu
 
 ## About this repo
 
@@ -44,4 +44,3 @@ team of up to 5 students can build a proxy similar to the one in the example cod
 # Deploying on Dokku
 
 For advice on deploying on Dokku, see: [/docs/dokku.md](/docs/dokku.md)
-
