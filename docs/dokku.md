@@ -3,7 +3,7 @@
 
 Deploying on Dokku is straightforward: you only need these steps:
 
-On your dokku server (once per team; the dokku server is shared by
+On your dokku server (once per team; the dokku server is shared by 
 the entire team):
 
 1. Create the app:
