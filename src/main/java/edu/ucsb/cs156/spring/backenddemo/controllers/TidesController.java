@@ -40,5 +40,4 @@ public class TidesController {
         return ResponseEntity.ok().body(result);
     }
 
-
 }
