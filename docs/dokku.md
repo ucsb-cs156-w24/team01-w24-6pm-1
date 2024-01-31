@@ -3,17 +3,17 @@
 
 Deploying on Dokku is straightforward: you only need these steps:
 
-On your dokku server (once per team; the dokku server is shared by
+On your dokku server (once per team; the dokku server is shared by 
 the entire team):
 
 1. Create the app:
    ```
-   dokku apps:create team01
+   dokku apps:create team01-w24-6pm-1
    ```
 
 2. Sync with repo (substitute your own team name):
    ```
-   dokku git:sync team01 https://github.com/ucsb-cs156-w24/team01-w24-9am-4 main
+   dokku git:sync team01-w24-6pm-1 https://github.com/ucsb-cs156-w24/team01-w24-6pm-1.git main   
    ```
 
    We always deploy the `main` branch only on the `team01` deployment, which we consider our "production" deployment (or "prod").  When working in a team environment, it is typical
@@ -22,7 +22,7 @@ the entire team):
 
 3. Build app:
    ```
-   dokku ps:rebuild team01
+   dokku ps:rebuild team01-w24-6pm-1
    ```
 
 Any time you need to redeploy, you can do so by repeating steps 2 and 3.
@@ -35,15 +35,15 @@ deploy branches other than `main` and see what happens.
 
 1. Create the app:
    ```
-   dokku apps:create team01-yourName
+   dokku apps:create team01-sanilkatula
    ```
 2. Sync with repo (substitute your own team name and branch name):
    ```
-   dokku git:sync https://github.com/ucsb-cs156-w24/team01-w24-9am-4 team01-yourName your-branch-name
+   dokku git:sync team01-sanilkatula-dev https://github.com/ucsb-cs156-w24/team01-w24-6pm-1 Sanil-ZipCode-Controller   
    ```
 3. Build app:
    ```
-   dokku ps:rebuild team01-yourName
+   dokku ps:rebuild team01-sanilkatula-dev
    ```
 
 Any time you need to redeploy, you can do so by repeating steps 2 and 3.
