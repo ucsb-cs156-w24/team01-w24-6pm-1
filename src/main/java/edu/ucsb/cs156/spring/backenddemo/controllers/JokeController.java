@@ -19,7 +19,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 //import io.swagger.v3.oas.annotations.ApiParam;
 
-@Tag(name="Joke info from ")
+@Tag(name="Joke info from https://v2.jokeapi.dev/joke/{category}?amount={numJokes}")
 @Slf4j
 @RestController
 @RequestMapping("/api/jokes")
